@@ -33,7 +33,7 @@ function Login() {
           name="password"
           className="passwordInp"
         />
-        <button className="loginBtn">Login</button>
+        <button className="loginBtn">Register</button>
       </Form>
       <p className="loginText">
         Already have an account?
