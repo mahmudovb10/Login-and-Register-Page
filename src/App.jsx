@@ -1,5 +1,5 @@
 import { login, logout } from "./features/userSlice";
-import Login from "./pages/Login";
+import Login, { action as LoginAction } from "./pages/Login";
 import Register, { action as RegisterAction } from "./pages/Register";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
@@ -32,6 +32,7 @@ function App() {
     {
       path: "login",
       element: user ? <Navigate to="/" /> : <Login />,
+      action: LoginAction,
     },
     {
       path: "register",
