@@ -14,15 +14,33 @@ function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
-      <Form method="post">
-        <FormInput type="email" label="Email:" name="email" />
-        <FormInput type="password" label="Password:" name="password" />
-        <button>Login</button>
+      <h1 className="loginTitle">
+        Login, <br />
+        <span>Welcome Back</span>
+      </h1>
+      <p className="loginDesc">Hey, welcome back to your special place</p>
+      <Form method="post" className="allForm">
+        <FormInput
+          type="email"
+          label="Email:"
+          name="email"
+          className="emailInp"
+        />
+        <FormInput
+          type="password"
+          label="Password:"
+          name="password"
+          className="passwordInp"
+        />
+        <button className="loginBtn">Login</button>
       </Form>
-      <p>
-        If you don't have account, please <Link to="/register">Register</Link>
+      <p className="loginText">
+        Don't have an account?
+        <Link to="/register" className="linkLog">
+          Register
+        </Link>
       </p>
+      <img src="./images/loginImage.webp" alt="" className="mainImg" />
     </div>
   );
 }
