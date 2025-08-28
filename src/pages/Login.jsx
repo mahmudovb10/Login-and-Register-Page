@@ -1,5 +1,8 @@
 import { Link, Form, useActionData } from "react-router-dom";
 import FormInput from "../components/FormInput";
+import { useLogin } from "../hooks/useLogin";
+import { useState, useEffect } from "react";
+import loginError from "../components/loginError";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -11,6 +14,17 @@ export async function action({ request }) {
 function Login() {
   const user = useActionData();
   console.log(user);
+  const [error, setError] = useState(null);
+  const { login } = useLogin();
+
+  useEffect(() => {
+    if (user?.email && user?.password) {
+      login(user.email, user.password);
+      setError(false);
+    } else {
+      setError(user ? loginError(user) : false);
+    }
+  }, [user]);
 
   return (
     <div>
@@ -34,13 +48,15 @@ function Login() {
         />
         <button className="loginBtn">Login</button>
       </Form>
+
+      <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
       <p className="loginText">
         Don't have an account?
         <Link to="/register" className="linkLog">
           Register
         </Link>
       </p>
-      <img src="./images/loginImage.webp" alt="" className="mainImg" />
+      <img src="./images/loginImage.webp" alt="" className="logImg" />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { Link, Form, useActionData } from "react-router-dom";
 import FormInput from "../components/FormInput";
-
+import { useEffect, useState } from "react";
+import { useRegister } from "../hooks/useRegister";
+import formError from "../components/ErrorIfd";
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -8,9 +10,19 @@ export async function action({ request }) {
   return data;
 }
 
-function Login() {
+function Register() {
   const user = useActionData();
-  console.log(user);
+  const [error, setError] = useState(null);
+  const { register, isPending, _error } = useRegister();
+
+  useEffect(() => {
+    if (user?.name && user?.email && user?.password) {
+      register(user.name, user.email, user.password);
+      setError(false);
+    } else {
+      setError(user ? formError(user) : false);
+    }
+  }, [user]);
 
   return (
     <div>
@@ -20,7 +32,7 @@ function Login() {
       </h1>
       <p className="loginDesc">Hey, welcome back to your special place</p>
       <Form method="post" className="allForm">
-        <FormInput type="text" label="Name:" name="name" className="emailInp" />
+        <FormInput type="text" label="Name:" name="name" className="nameInp" />
         <FormInput
           type="email"
           label="Email:"
@@ -33,17 +45,25 @@ function Login() {
           name="password"
           className="passwordInp"
         />
-        <button className="loginBtn">Register</button>
+        {!isPending && <button className="loginBtn">Register</button>}
+        {isPending && (
+          <button className="loginBtn" disabled>
+            Loading...
+          </button>
+        )}
       </Form>
+
+      <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
+      <div>{_error && <p style={{ color: "red" }}>{_error}</p>}</div>
       <p className="loginText">
         Already have an account?
         <Link to="/login" className="linkLog">
           Login
         </Link>
       </p>
-      <img src="./images/loginImage.webp" alt="" className="mainImg" />
+      <img src="./images/loginImage.webp" alt="" className="regImg" />
     </div>
   );
 }
 
-export default Login;
+export default Register;
