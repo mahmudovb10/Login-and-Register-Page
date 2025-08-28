@@ -15,11 +15,11 @@ export function getFirebaseErrorMessage(error) {
       return " Bu email bilan allaqachon hisob ochilgan. Boshqa email kiriting.";
     case "auth/invalid-email":
       return " Email manzili noto‘g‘ri kiritilgan";
-    case "auth/weak-password": // <-- oldin 'week' yozib yuborgansan
+    case "auth/weak-password":
       return " Parol juda kuchsiz (kamida 6 ta belgidan iborat bo‘lishi kerak)";
     case "auth/user-not-found":
       return " Hisob topilmadi yoki email noto‘g‘ri";
-    case "auth/network-request-failed": // <-- oldin 'netwprk' yozib yuborgansan
+    case "auth/network-request-failed":
       return " Internet aloqangizni tekshiring va qayta urinib ko‘ring";
     case "auth/wrong-password":
       return " Parol noto‘g‘ri";

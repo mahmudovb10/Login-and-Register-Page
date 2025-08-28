@@ -55,6 +55,7 @@ function Register() {
 
       <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
       <div>{_error && <p style={{ color: "red" }}>{_error}</p>}</div>
+
       <p className="loginText">
         Already have an account?
         <Link to="/login" className="linkLog">

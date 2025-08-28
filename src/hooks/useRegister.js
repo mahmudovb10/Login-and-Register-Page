@@ -9,24 +9,23 @@ export const useRegister = () => {
   const dispatch = useDispatch();
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
+
   const register = async (name, email, password) => {
     try {
       setIsPending(true);
-      const req = await createUserWithEmailAndPassword(
-        auth,
-        name,
-        email,
-        password
-      );
+
+      const req = await createUserWithEmailAndPassword(auth, email, password);
 
       if (!req.user) {
-        throw new Error("Register faied )");
+        throw new Error("Register failed");
       }
+
       await updateProfile(req.user, {
         displayName: name,
       });
+
       dispatch(login(req.user));
-      console.log(req.user);
+      console.log("User registered:", req.user);
     } catch (error) {
       setError(getFirebaseErrorMessage(error));
       console.log(error.message);
