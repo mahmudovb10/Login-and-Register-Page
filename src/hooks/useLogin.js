@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
 import { getFirebaseErrorMessage } from "../components/ErrorIfd";
+import { doc, updateDoc } from "firebase/firestore";
 
 export const useLogin = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,13 @@ export const useLogin = () => {
       if (!req.user) {
         throw new Error("Login faied )");
       }
-      await updateProfile(req.user, {
-        displayName: name,
+
+      const useRef = doc(db, "users", req.user.uid);
+
+      await updateDoc(useRef, {
+        online: true,
       });
+
       dispatch(login(req.user));
       console.log(req.user);
     } catch (error) {
