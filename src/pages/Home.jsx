@@ -1,12 +1,23 @@
 import useLogout from "../hooks/useLogout";
 import { useSelector } from "react-redux";
 import { useCollection } from "../hooks/useCollection";
+import { useState } from "react";
 
 function Home() {
   const { _logout, error, isPending } = useLogout();
   const { user } = useSelector((store) => store.user);
   const { data } = useCollection("users");
-  console.log(data);
+
+  const [messages, setMessages] = useState({});
+
+  const handleChange = (uid, value) => {
+    setMessages((prev) => ({ ...prev, [uid]: value }));
+  };
+
+  const handleSend = (uid) => {
+    setMessages((prev) => ({ ...prev, [uid]: "" }));
+  };
+
   return (
     <div className="customCont">
       <header className="header">
@@ -18,6 +29,7 @@ function Home() {
         />
         <h3 className="title">Website</h3>
       </header>
+
       <div
         style={{ display: "flex", alignItems: "center", gap: "10px" }}
         className="inlineUsers"
@@ -29,9 +41,9 @@ function Home() {
           height={30}
           style={{ borderRadius: "50%" }}
         />
-
         <h1 className="userName">Hello - {user.displayName}</h1>
       </div>
+
       {error && <div>{error}</div>}
       {!isPending && (
         <button onClick={_logout} className="btn btn-soft btn-error logoutBtn">
@@ -43,6 +55,7 @@ function Home() {
           Loading
         </button>
       )}
+
       {data &&
         data.map((user) => {
           return (
@@ -77,6 +90,39 @@ function Home() {
                   ></div>
                 )}
               </p>
+              <label htmlFor={`modal-${user.uid}`} className="btn btn-primary">
+                Send Message
+              </label>
+
+              {/* Modal */}
+              <input
+                type="checkbox"
+                id={`modal-${user.uid}`}
+                className="modal-toggle"
+              />
+              <div className="modal">
+                <div className="modal-box">
+                  <h3 className="font-bold text-lg">{user.displayName}</h3>
+                  <textarea
+                    className="textarea textarea-bordered w-full my-4"
+                    placeholder={`Write a message to ${user.displayName}`}
+                    value={messages[user.uid] || ""}
+                    onChange={(e) => handleChange(user.uid, e.target.value)}
+                  />
+                  <div className="modal-action">
+                    <label htmlFor={`modal-${user.uid}`} className="btn">
+                      Close
+                    </label>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => handleSend(user.uid)}
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           );
         })}
