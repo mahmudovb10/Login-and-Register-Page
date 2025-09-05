@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { useEffect } from "react";
+import CreateTask from "./pages/CreateTask";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ function App() {
         {
           index: true,
           element: <Home />,
+        },
+        {
+          path: "/create",
+          element: <CreateTask />,
         },
       ],
     },

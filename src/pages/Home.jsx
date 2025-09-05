@@ -2,11 +2,14 @@ import useLogout from "../hooks/useLogout";
 import { useSelector } from "react-redux";
 import { useCollection } from "../hooks/useCollection";
 import { useState } from "react";
+import CreateTask from "./CreateTask";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { _logout, error, isPending } = useLogout();
   const { user } = useSelector((store) => store.user);
   const { data } = useCollection("users");
+  const { data: tasks } = useCollection("tasks");
 
   const [messages, setMessages] = useState({});
 
@@ -28,6 +31,9 @@ function Home() {
           height={60}
         />
         <h3 className="title">Website</h3>
+        <Link to="/create" className="btn btn-primary">
+          Create Task
+        </Link>
       </header>
 
       <div
@@ -69,7 +75,7 @@ function Home() {
                 style={{ borderRadius: "50%" }}
               />
               <h4 className="usersName">{user.displayName}</h4>
-              <p className="userOnOf">
+              <div className="userOnOf">
                 {user.online ? (
                   <div
                     style={{
@@ -89,7 +95,7 @@ function Home() {
                     }}
                   ></div>
                 )}
-              </p>
+              </div>
               <label htmlFor={`modal-${user.uid}`} className="btn btn-primary">
                 Send Message
               </label>
@@ -126,6 +132,16 @@ function Home() {
             </div>
           );
         })}
+      <ul className="tasks__list">
+        {tasks &&
+          tasks.map((task) => {
+            return (
+              <li>
+                <h5>{task.title}</h5>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 }

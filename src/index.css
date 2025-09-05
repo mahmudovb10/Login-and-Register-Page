@@ -25,6 +25,10 @@ body {
   top: 8rem;
 }
 
+.header {
+  margin-left: 1rem;
+}
+
 .allForm {
   position: relative;
   left: 15rem;
@@ -199,4 +203,14 @@ body {
 
 .title {
   font-weight: bold;
+}
+
+.selectUsers {
+  width: 28rem;
+}
+
+.tasks__list {
+  position: relative;
+  bottom: 21rem;
+  left: 1rem;
 }
