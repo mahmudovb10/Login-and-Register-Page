@@ -3,6 +3,8 @@ import FormInput from "../components/FormInput";
 import { useEffect, useState } from "react";
 import { useRegister } from "../hooks/useRegister";
 import formError from "../components/ErrorIfd";
+import { useGoogle } from "../hooks/useGoogle";
+
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -14,6 +16,12 @@ function Register() {
   const user = useActionData();
   const [error, setError] = useState(null);
   const { register, isPending, _error } = useRegister();
+
+  const {
+    googleProvider,
+    isPending: isPendingGoogle,
+    error: errorGoogle,
+  } = useGoogle();
 
   useEffect(() => {
     if (user?.name && user?.email && user?.password) {
@@ -49,6 +57,11 @@ function Register() {
         {isPending && (
           <button className="loginBtn" disabled>
             Loading...
+          </button>
+        )}
+        {!isPendingGoogle && (
+          <button className="btn" type="button" onClick={googleProvider}>
+            Google
           </button>
         )}
       </Form>
