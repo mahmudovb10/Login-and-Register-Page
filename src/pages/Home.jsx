@@ -144,7 +144,7 @@ function Home() {
                     {task.attachedUsers.map((user) => {
                       return (
                         <div
-                          key={user.uid}
+                          key={task}
                           className="tooltip"
                           data-tip={user.displayName}
                         >

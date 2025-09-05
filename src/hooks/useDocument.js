@@ -4,15 +4,24 @@ import { db } from "../firebase/config";
 
 function useDocument(collectionName, documentId) {
   const [data, setData] = useState(null);
-  return useEffect(() => {
-    const unsub = onSnapshot(doc(db, collectionName, documentId), (doc) => {
-      setData({
-        id: doc.id,
-        ...doc.data(),
-      });
-    });
+
+  useEffect(() => {
+    if (!documentId) return;
+
+    const unsub = onSnapshot(
+      doc(db, collectionName, documentId),
+      (snapshot) => {
+        setData({
+          id: snapshot.id,
+          ...snapshot.data(),
+        });
+      }
+    );
+
     return () => unsub();
-  }, [documentId]);
+  }, [collectionName, documentId]);
+
+  return { data };
 }
 
 export default useDocument;
