@@ -136,8 +136,30 @@ function Home() {
         {tasks &&
           tasks.map((task) => {
             return (
-              <li>
-                <h5>{task.title}</h5>
+              <li key={task.uid}>
+                <Link to={`/task/${task.uid}`}>
+                  <h5>{task.title}</h5>
+
+                  <div>
+                    {task.attachedUsers.map((user) => {
+                      return (
+                        <div
+                          key={user.uid}
+                          className="tooltip"
+                          data-tip={user.displayName}
+                        >
+                          <img
+                            src={user.photoURL}
+                            alt=""
+                            width={15}
+                            height={15}
+                            style={{ borderRadius: "50%" }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Link>
               </li>
             );
           })}

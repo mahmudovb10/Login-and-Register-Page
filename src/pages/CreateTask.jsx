@@ -73,7 +73,7 @@ function CreateTask() {
   };
 
   return (
-    <form onSubmit={handleSubmit} method="post">
+    <form onSubmit={handleSubmit} method="post" className="ml-[1rem] mt-[1rem]">
       <FormInput label="Title:" name="title" type="text" className="input" />
       <FromTextArea label="Description:" name="description" />
       <FormInput label="Due to:" name="due-to" type="date" />
@@ -87,9 +87,7 @@ function CreateTask() {
         classNamePrefix="select"
         components={{ Option: UserOption, MultiValueLabel: UserMultiValue }}
       />
-      <button className="btn btn-outline mt-[1rem] ml-[1rem]">
-        Create Task
-      </button>
+      <button className="btn btn-outline mt-[1rem]">Create Task</button>
     </form>
   );
 }
