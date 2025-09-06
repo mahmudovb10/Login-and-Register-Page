@@ -35,7 +35,7 @@ function Login() {
   }, [user]);
 
   return (
-    <div>
+    <div className="log">
       <h1 className="loginTitle">
         Login, <br />
         <span>Welcome Back</span>
@@ -97,7 +97,6 @@ function Login() {
           Register
         </Link>
       </p>
-      <img src="./images/loginImage.webp" alt="" className="logImg" />
     </div>
   );
 }

@@ -33,7 +33,7 @@ function Register() {
   }, [user]);
 
   return (
-    <div>
+    <div className="reg">
       <h1 className="loginTitle">
         Register, <br />
         <span>Welcome Back</span>
@@ -60,7 +60,11 @@ function Register() {
           </button>
         )}
         {!isPendingGoogle && (
-          <button className="btn" type="button" onClick={googleProvider}>
+          <button
+            className="btn googleBtn"
+            type="button"
+            onClick={googleProvider}
+          >
             Google
           </button>
         )}
@@ -75,7 +79,7 @@ function Register() {
           Login
         </Link>
       </p>
-      <img src="./images/loginImage.webp" alt="" className="regImg" />
+      <h6 className="googleDesc">Or Register With</h6>
     </div>
   );
 }

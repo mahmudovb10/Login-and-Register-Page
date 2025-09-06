@@ -5,6 +5,14 @@ body {
   overflow-x: hidden;
 }
 
+.reg {
+  margin-left: 20rem;
+}
+
+.log {
+  margin-left: 20rem;
+}
+
 .loginTitle {
   color: rgb(0, 0, 0);
   font-size: 36px;
@@ -85,9 +93,9 @@ body {
   font-size: 14px;
   color: 6B7280;
   position: relative;
-  left: 15rem;
-  top: 8rem;
-  margin-top: 0.3rem;
+  left: 18rem;
+  top: 9rem;
+  margin-top: 5rem;
 }
 
 .linkLog {
@@ -211,7 +219,7 @@ body {
 
 .tasks__list {
   position: relative;
-  bottom: 21rem;
+  bottom: 13rem;
   left: 1rem;
 }
 
@@ -220,7 +228,7 @@ input {
 }
 
 .task {
-  background: url("/images/chatbackground.jpg") no-repeat center center fixed;
+  background: url("/images/chat.jpg") no-repeat center center fixed;
   background-size: cover;
   object-fit: cover;
 }
@@ -278,8 +286,6 @@ input {
   border: none;
   background-color: transparent;
   position: relative;
-  box-shadow: none;
-  right: 3rem;
   bottom: 1.3rem;
 }
 
@@ -295,4 +301,30 @@ input {
 
 .otherUser {
   cursor: pointer;
+}
+
+.userText {
+  color: black;
+}
+
+.userDisplayName {
+  color: rgb(75, 75, 203);
+}
+
+.test {
+  color: rgb(179, 222, 113);
+}
+
+.googleBtn {
+  position: relative;
+  top: 5rem;
+  right: 13rem;
+}
+
+.googleDesc {
+  position: relative;
+  top: 2rem;
+  left: 20.5rem;
+  font-size: 14px;
+  color: 6B7280;
 }

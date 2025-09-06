@@ -56,11 +56,19 @@ function Task() {
                       />
                     </div>
                   </div>
-                  <div className="chat-bubble">
-                    <span className="font-semibold mr-2">
-                      {comment.displayName}:
+                  <div
+                    className="chat-bubble"
+                    style={{
+                      backgroundColor:
+                        user.uid === comment.uid
+                          ? "rgb(179, 222, 113)"
+                          : "none",
+                    }}
+                  >
+                    <span className="font-semibold mr-2 userDisplayName">
+                      {comment.displayName}
                     </span>
-                    <span>{comment.text}</span>
+                    <div className="userText">{comment.text}</div>
                   </div>
                 </div>
               );
@@ -73,7 +81,7 @@ function Task() {
         <img className="userPhoto" src={user.photoURL} alt="" />
         <input
           type="text"
-          placeholder="Write Message"
+          placeholder="Write a Message..."
           name="comment"
           className="input commentInput"
           required
