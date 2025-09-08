@@ -231,6 +231,8 @@ input {
   background: url("/images/chat.jpg") no-repeat center center fixed;
   background-size: cover;
   object-fit: cover;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .usersChat {
