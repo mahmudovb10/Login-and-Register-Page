@@ -142,10 +142,10 @@ function Home() {
                   <h5>{task.title}</h5>
 
                   <div>
-                    {task.attachedUsers.map((user) => {
+                    {task.attachedUsers.map((user, index) => {
                       return (
                         <div
-                          key={task}
+                          key={`${task.uid}-${index}`}
                           className="tooltip"
                           data-tip={user.displayName}
                         >

@@ -14,7 +14,7 @@ export const useCollection = (collectionName, _query, _where) => {
   const whereData = useRef(_where);
 
   useEffect(() => {
-    let q = collection.apply(db, collectionName);
+    let q = collection(db, collectionName);
     if (queryData?.current) {
       q = query(q, orderBy("timestamp", queryData?.current));
     } else if (whereData?.current) {
