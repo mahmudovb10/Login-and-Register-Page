@@ -34,6 +34,7 @@ function Home() {
         <Link to="/create" className="btn btn-primary">
           Create Task
         </Link>
+        <Link to="/profile">Profile</Link>
       </header>
 
       <div

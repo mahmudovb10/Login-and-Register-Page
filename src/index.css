@@ -233,6 +233,7 @@ input {
   object-fit: cover;
   min-height: 100vh;
   width: 100%;
+  padding-bottom: 80px;
 }
 
 .usersChat {
@@ -264,22 +265,6 @@ input {
   margin-bottom: 1rem;
 }
 
-.commentInput {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  margin-left: 3rem;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 10px 15px;
-  width: 70%;
-  color: #111827;
-  position: relative;
-  bottom: 2rem;
-}
-
 .publicChat {
   margin-left: 2rem;
 }
@@ -287,18 +272,6 @@ input {
 .sendBtn {
   border: none;
   background-color: transparent;
-  position: relative;
-  bottom: 1.3rem;
-}
-
-.userPhoto {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  position: relative;
-  top: 2.3rem;
-  left: 0.5rem;
-  cursor: pointer;
 }
 
 .otherUser {
@@ -329,4 +302,46 @@ input {
   left: 20.5rem;
   font-size: 14px;
   color: 6B7280;
+}
+
+.commentItems {
+  display: flex;
+  margin-top: 27.5rem;
+  margin-right: 4rem;
+  position: fixed;
+  top: 12rem;
+  bottom: 0;
+  right: 2rem;
+  left: 0;
+}
+
+.userPhoto {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  left: 2.3rem;
+}
+
+.commentInput {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 3rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 15px;
+  width: 70%;
+  color: #111827;
+  position: relative;
+  bottom: 2rem;
+}
+
+.userProfilePhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }

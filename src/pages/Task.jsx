@@ -77,7 +77,7 @@ function Task() {
         )}
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="commentItems">
         <img className="userPhoto" src={user.photoURL} alt="" />
         <input
           type="text"
