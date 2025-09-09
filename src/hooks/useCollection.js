@@ -18,7 +18,7 @@ export const useCollection = (collectionName, _query, _where) => {
     if (queryData?.current) {
       q = query(q, orderBy("timestamp", queryData?.current));
     } else if (whereData?.current) {
-      q = query(q, where("uid", "==", auth.currentUser.uid));
+      q = query(q, where(..._where));
     }
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = [];

@@ -345,3 +345,23 @@ input {
   height: 120px;
   border-radius: 50%;
 }
+
+.userInlineBg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.setUrl {
+  display: flex;
+  margin-left: 15rem;
+}
+
+.setUrlInp {
+  margin-top: -5rem;
+}
+
+.setBtn {
+  margin-left: 1rem;
+  margin-top: -5rem;
+}
