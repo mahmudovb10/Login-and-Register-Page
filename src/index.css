@@ -349,7 +349,9 @@ input {
 .userInlineBg {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .setUrl {
@@ -364,4 +366,8 @@ input {
 .setBtn {
   margin-left: 1rem;
   margin-top: -5rem;
+}
+
+.profileBtn {
+  cursor: pointer;
 }

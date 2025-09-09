@@ -34,7 +34,6 @@ function Home() {
         <Link to="/create" className="btn btn-primary">
           Create Task
         </Link>
-        <Link to="/profile">Profile</Link>
       </header>
 
       <div
@@ -48,7 +47,14 @@ function Home() {
           height={30}
           style={{ borderRadius: "50%" }}
         />
-        <h1 className="userName">Hello - {user.displayName}</h1>
+        <Link to="/profile">
+          <h1 className="userName">
+            <button className="tooltip profileBtn" data-tip="Profile">
+              <i class="fa-solid fa-user"></i>
+            </button>{" "}
+            - {user.displayName}
+          </h1>
+        </Link>
       </div>
 
       {error && <div>{error}</div>}
@@ -96,39 +102,6 @@ function Home() {
                     }}
                   ></div>
                 )}
-              </div>
-              <label htmlFor={`modal-${user.uid}`} className="btn btn-primary">
-                Send Message
-              </label>
-
-              {/* Modal */}
-              <input
-                type="checkbox"
-                id={`modal-${user.uid}`}
-                className="modal-toggle"
-              />
-              <div className="modal">
-                <div className="modal-box">
-                  <h3 className="font-bold text-lg">{user.displayName}</h3>
-                  <textarea
-                    className="textarea textarea-bordered w-full my-4"
-                    placeholder={`Write a message to ${user.displayName}`}
-                    value={messages[user.uid] || ""}
-                    onChange={(e) => handleChange(user.uid, e.target.value)}
-                  />
-                  <div className="modal-action">
-                    <label htmlFor={`modal-${user.uid}`} className="btn">
-                      Close
-                    </label>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={() => handleSend(user.uid)}
-                    >
-                      Send
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           );

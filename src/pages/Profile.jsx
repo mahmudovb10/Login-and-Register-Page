@@ -3,9 +3,12 @@ import { useSelector } from "react-redux";
 import { auth } from "../firebase/config";
 import { useCollection } from "../hooks/useCollection";
 import getRandomGradient from "../utils";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useLogout from "../hooks/useLogout";
 
 function Profile() {
+  const { _logout, error, isPending } = useLogout();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useSelector((store) => store.user);
   const { data } = useCollection("users", null, [
     "uid",
@@ -15,6 +18,13 @@ function Profile() {
 
   const [bgImage, setBgImage] = useState("");
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    const savedBg = localStorage.getItem("profileBg");
+    if (savedBg) {
+      setBgImage(savedBg);
+    }
+  }, []);
 
   const sendEmailLink = () => {
     sendEmailVerification(auth.currentUser)
@@ -30,7 +40,9 @@ function Profile() {
     e.preventDefault();
     if (inputValue.trim()) {
       setBgImage(inputValue.trim());
+      localStorage.setItem("profileBg", inputValue.trim());
       setInputValue("");
+      setIsModalOpen(true);
     }
   };
 
@@ -84,6 +96,21 @@ function Profile() {
           )}
         </small>
       </div>
+      {isModalOpen && (
+        <dialog open className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
+              ✅ Rasm muvaffaqiyatli qo‘shildi!
+            </h3>
+            <p className="py-4">Yangi fon rasmi saqlandi.</p>
+            <div className="modal-action">
+              <button className="btn" onClick={() => setIsModalOpen(false)}>
+                Yopish
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 }
