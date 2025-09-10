@@ -59,58 +59,60 @@ function Profile() {
         }}
       />
 
-      <img
-        src={user.photoURL}
-        alt="user profile"
-        width={100}
-        height={100}
-        className="userProfilePhoto"
-      />
-
-      <form className="setUrl" onSubmit={handleSubmit}>
-        <input
-          type="url"
-          className="input setUrlInp"
-          placeholder="Rasm URL kiriting"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+      <div className="mainBack">
+        <img
+          src={user.photoURL}
+          alt="user profile"
+          width={100}
+          height={100}
+          className="userProfilePhoto"
         />
-        <button type="submit" className="btn setBtn">
-          Add
-        </button>
-      </form>
 
-      <h3>{user.displayName}</h3>
-      <div>
-        <h3>{user.email}</h3>
-        <small>
-          {user.emailVerified ? (
-            <p>Email Verified 👌</p>
-          ) : (
-            <>
-              <p>Email Not Verified</p>
-              <button onClick={sendEmailLink} className="btn">
-                Send Verification Link
-              </button>
-            </>
-          )}
-        </small>
-      </div>
-      {isModalOpen && (
-        <dialog open className="modal">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">
-              ✅ Rasm muvaffaqiyatli qo‘shildi!
-            </h3>
-            <p className="py-4">Yangi fon rasmi saqlandi.</p>
-            <div className="modal-action">
-              <button className="btn" onClick={() => setIsModalOpen(false)}>
-                Yopish
-              </button>
+        <form className="setUrl" onSubmit={handleSubmit}>
+          <input
+            type="url"
+            className="input setUrlInp"
+            placeholder="Create a New Image URL"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button type="submit" className="btn setBtn">
+            Add
+          </button>
+        </form>
+
+        <h3 className="dispName">{user.displayName}</h3>
+        <div>
+          <h3 className="usEmail">{user.email}</h3>
+          <small className="verify">
+            {user.emailVerified ? (
+              <p>Email Verified ✅</p>
+            ) : (
+              <>
+                <p>Email Not Verified</p>
+                <button onClick={sendEmailLink} className="btn">
+                  Send Verification Link
+                </button>
+              </>
+            )}
+          </small>
+        </div>
+        {isModalOpen && (
+          <dialog open className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">
+                ✅ Rasm muvaffaqiyatli qo‘shildi!
+              </h3>
+              <p className="py-4">Yangi fon rasmi saqlandi.</p>
+              <div className="modal-action">
+                <button className="btn" onClick={() => setIsModalOpen(false)}>
+                  Yopish
+                </button>
+              </div>
             </div>
-          </div>
-        </dialog>
-      )}
+          </dialog>
+        )}
+      </div>
     </div>
   );
 }

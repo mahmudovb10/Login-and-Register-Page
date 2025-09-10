@@ -344,6 +344,9 @@ input {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  position: relative;
+  left: 2rem;
+  bottom: 4rem;
 }
 
 .userInlineBg {
@@ -357,6 +360,9 @@ input {
 .setUrl {
   display: flex;
   margin-left: 15rem;
+  position: relative;
+  bottom: 2rem;
+  right: 3rem;
 }
 
 .setUrlInp {
@@ -371,3 +377,33 @@ input {
 .profileBtn {
   cursor: pointer;
 }
+
+.dispName {
+  position: relative;
+  left: 2rem;
+  bottom: 3rem;
+  font-weight: bold;
+}
+
+.usEmail {
+  position: relative;
+  left: 2rem;
+  bottom: 3rem;
+  font-weight: bold;
+}
+
+.verify {
+  position: relative;
+  left: 2rem;
+  bottom: 3rem;
+  font-weight: bold;
+}
+
+/* .mainBack {
+  background: #eeaeca;
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+} */
