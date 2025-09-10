@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import CreateTask from "./pages/CreateTask";
 import Task from "./pages/Task";
 import Profile from "./pages/Profile";
+import UserInfo from "./pages/userInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,10 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/userInfo/:id",
+          element: <UserInfo />,
         },
       ],
     },
